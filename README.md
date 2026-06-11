@@ -1,71 +1,61 @@
 # Copenhagen Mood Atlas
 
-**Copenhagen Mood Atlas** is a portfolio-ready Streamlit data product that helps people explore Copenhagen districts by everyday lifestyle fit: cosy cafés, calm streets, practical errands, rainy-day options, social energy, family living, and international feel.
+**Copenhagen Mood Atlas** is a Streamlit data product for exploring Copenhagen districts through everyday lifestyle fit: cosy cafés, calm streets, practical errands, rainy-day options, social energy, family living, and international feel.
 
-The project is intentionally built like a small product, not a notebook demo. It combines a guided UX, an interactive polygon map, deterministic recommendations, transparent scoring, and cached public data so the app is fast, explainable, and deployment-friendly.
-
----
-
-## Product Story
-
-Moving through a city is rarely just about distance. People choose neighbourhoods based on mood, habits, constraints, and small daily rituals: where to get coffee, where to walk on a rainy Sunday, where errands are easy, or where the streets feel calmer.
-
-Copenhagen Mood Atlas turns those fuzzy preferences into a readable exploration tool:
-
-1. **Choose a map lens** such as Hygge, Calm, Daily Convenience, or Rainy-day Comfort.
-2. **Inspect a district** with score chips, a profile card, and a compact radar view.
-3. **Ask for a recommendation** in natural language and get ranked matches with plain-English explanations.
-
-The app is designed with a clean Notion/Clay-inspired interface: warm surfaces, clear cards, large visual step markers, minimal chart noise, and strong hierarchy around the next action.
+It combines an interactive district map, lifestyle scoring, natural-language recommendations, transparent methodology, and cached public data in a deployment-ready portfolio project.
 
 ---
 
-## What This Demonstrates
+## Overview
 
-This project is meant to show end-to-end product judgment, not only technical implementation.
+Choosing where to spend time in a city is rarely only about distance. People compare neighbourhoods through routines, preferences, trade-offs, and small daily rituals: where to get coffee, where to walk on a rainy Sunday, where errands are easy, or where the streets feel quieter.
 
-| Area | What the project shows |
+Copenhagen Mood Atlas turns those preferences into a guided exploration tool:
+
+1. **Choose a lifestyle lens** such as Hygge, Calm, Daily Convenience, or Rainy-day Comfort.
+2. **Inspect a district** through score chips, a profile card, a polygon map, and a compact radar view.
+3. **Ask for a recommendation** in natural language and get ranked district matches with plain-English explanations.
+
+The product uses a warm, editorial interface with clear cards, compact scoring, step-based navigation, and a restrained Copenhagen-inspired visual system.
+
+---
+
+## What This Project Demonstrates
+
+| Area | What it shows |
 | --- | --- |
-| **UX / Product Design** | Guided flow, clear information hierarchy, card-based ranking, visible onboarding, and low-friction exploration. |
-| **Frontend in Streamlit** | Custom CSS design system, responsive layout, polished cards, progress indicators, tabs, expanders, and Plotly integration. |
-| **Data Product Thinking** | Proxy score design, caveats, source transparency, no fake runtime fallback, and Method tab for auditability. |
-| **Recommendation Logic** | Deterministic natural-language parsing with synonyms, related concepts, negation handling, compatibility adjustments, and explainable outputs. |
-| **Engineering Hygiene** | Modular app structure, local processed data, lightweight tests, reproducible scripts, and deployment-friendly dependencies. |
+| **Product design** | Guided flow, clear hierarchy, ranked cards, onboarding, and low-friction exploration. |
+| **Streamlit frontend** | Custom CSS design system, responsive layout, tabs, expanders, Plotly charts, and polished UI components. |
+| **Data product thinking** | Proxy score design, caveats, source transparency, cached data, and an auditable Method tab. |
+| **Recommendation logic** | Deterministic natural-language parsing with synonyms, related concepts, negation handling, compatibility adjustments, and explainable outputs. |
+| **Engineering hygiene** | Modular app structure, reproducible scripts, local processed data, lightweight tests, and deployment-friendly dependencies. |
 
 ---
 
-## Key Features
+## Features
 
-- **Interactive Copenhagen district map** using official district polygons.
+- **Interactive Copenhagen district map** built from official district polygons.
 - **Lifestyle lenses** for Hygge, Calm, Youth Pulse, Daily Convenience, Rainy-day Comfort, Family Living, and International Feel.
-- **Natural-language recommendation engine** for prompts such as `calm, cafés, parks, easy transit, not too loud`.
-- **Explainable ranking cards** that show why a district matched instead of only returning a score.
-- **Clean portfolio UI** with a defined Copenhagen-inspired palette, large step icons, card surfaces, pills, score chips, and progress bars.
-- **Transparent methodology tab** rendering score formulas directly from the code config.
-- **Real-data-first runtime**: the app stops with setup instructions if required processed files are missing instead of inventing values.
-- **Offline ingestion pipeline** for OpenStreetMap amenities, official boundaries, and demographic exports.
+- **Natural-language district matcher** for prompts such as `calm, cafés, parks, easy transit, not too loud`.
+- **Explainable ranking cards** showing the strongest signals behind each match.
+- **Methodology tab** with score definitions, source notes, and formulas rendered from the code config.
+- **Real-data-first runtime** that stops with setup guidance when required processed files are missing.
+- **Offline ingestion pipeline** for OpenStreetMap amenities, official district boundaries, and demographic exports.
+- **Deployment-friendly architecture** with cached local data and no paid model APIs.
 
 ---
 
-## UX Decisions
+## Interface System
 
-### 1. Remove chart noise
+The app uses a compact product interface built around mapped exploration, ranked recommendation cards, and readable score explanations.
 
-The earlier bar charts were removed because they did not help the core user journey. The app now uses ranked cards and progress bars, which are faster to scan and feel closer to a modern product interface.
-
-### 2. Make the journey obvious
-
-Large step labels guide the user through the app:
+### Main flow
 
 - 🧭 **Step 1 · Choose a map lens**
 - 👆 **Step 2 · Inspect a district**
 - ✨ **Step 3 · Get a match**
 
-This makes the experience more self-explanatory during a portfolio review or live demo.
-
-### 3. Keep the UI calm and editorial
-
-The visual system uses a restrained palette:
+### Visual tokens
 
 | Token | Role | Hex |
 | --- | --- | --- |
@@ -78,25 +68,19 @@ The visual system uses a restrained palette:
 | Amber | Kicker / status accent | `#C9892B` |
 | Clay | Secondary warmth | `#D98568` |
 
-The goal is to feel closer to Notion or Clay than a default analytics dashboard.
-
-### 4. Explain before asking for trust
-
-The Method tab makes the proxy nature of the scores explicit. It shows the source stack, what each score means, and the exact weighted formula used in code.
-
 ---
 
 ## Recommendation Engine
 
-The recommendation engine is deterministic and does **not** call an LLM API. This keeps the project lightweight, reproducible, and easy to deploy.
+The recommendation engine is deterministic and does **not** call an LLM API. It is lightweight, reproducible, and easy to deploy.
 
 It uses:
 
 - concept rules with synonyms and regex word boundaries
 - related concept expansion, for example family also boosts calm, convenience, green access, and rainy-day comfort
-- simple negation handling, for example `no nightlife`, `too loud`, and `avoid nightlife`
+- negation handling for phrases such as `no nightlife`, `too loud`, and `avoid nightlife`
 - compatibility adjustments, for example strong family or calm searches are slightly penalised by nightlife pressure
-- explanations based on the strongest user-weighted signals, not only each district's generic strengths
+- explanations based on the strongest user-weighted signals
 
 Example output:
 
@@ -106,7 +90,7 @@ Example output:
 
 ## Data Sources
 
-The app is built around cached local data. It does not query public services at runtime.
+The app uses cached local data and does not query public services at runtime.
 
 | Source | Used for |
 | --- | --- |
@@ -114,9 +98,9 @@ The app is built around cached local data. It does not query public services at 
 | **OpenStreetMap via Overpass** | Amenity signals such as cafés, bakeries, libraries, museums, bars, benches, bike parking, and practical services. |
 | **KK Statistikbank** | District-level population, age, citizenship, and family indicators from official CSV exports. |
 
-### Data Philosophy
+### Data Notes
 
-The scores are **not official statistics**. They are explainable proxy indices created from public signals. The goal is to support exploration and comparison, not to make absolute claims about neighbourhood quality, safety, or desirability.
+The scores are **explainable proxy indices**, not official statistics. They are designed for exploration and comparison, not for absolute claims about neighbourhood quality, safety, or desirability.
 
 ---
 
@@ -155,20 +139,20 @@ pip install -r requirements.txt
 streamlit run app/streamlit_app.py
 ```
 
-The app expects:
+The app expects these files to exist locally:
 
 ```text
 data/processed/neighborhood_features_osm.csv
 data/raw/copenhagen_bydels_boundaries_raw.geojson
 ```
 
-If these files are missing, the app shows setup guidance instead of falling back to mock data.
+If they are missing, the app shows setup guidance instead of falling back to mock data.
 
 ---
 
-## Real-data Pipeline
+## Data Pipeline
 
-Run these scripts when you want to refresh the local data files.
+Run these scripts to refresh the local data files.
 
 ### 1. Fetch official Copenhagen district boundaries
 
@@ -201,13 +185,13 @@ Creates:
 data/raw/osm_copenhagen_amenities_raw.json
 ```
 
-Use `--force` only when you deliberately want a fresh Overpass request:
+Use `--force` only when deliberately refreshing Overpass data:
 
 ```bash
 python -m src.ingestion.fetch_osm --force
 ```
 
-Overpass is a public community service, so the project keeps requests manual and cached.
+Overpass is a public community service, so requests are manual and cached.
 
 ### 3. Fetch and process official demographic data
 
@@ -250,7 +234,7 @@ data/processed/neighborhood_features_osm.csv
 
 The OSM pipeline assigns amenities using point-in-polygon against Copenhagen district polygons. If boundary files are missing, the build step fails instead of assigning amenities to approximate or mock centroids.
 
-Preferred real-data labels when all real layers are available:
+Expected real-data labels when all real layers are available:
 
 ```text
 data_mode = osm_amenities_official_boundaries_official_demographics
@@ -260,15 +244,9 @@ demographic_source = KK Statistikbank
 
 ---
 
-## Streamlit Community Cloud Deployment
+## Deployment
 
-This app is designed to deploy cleanly because it:
-
-- uses local processed CSV and GeoJSON files at runtime
-- avoids paid model APIs
-- keeps dependencies light: Streamlit, pandas, numpy, plotly, requests, and pytest
-- avoids heavy geospatial runtime dependencies such as GeoPandas
-- includes `.streamlit/config.toml`
+The app is ready for Streamlit Community Cloud.
 
 Deployment settings:
 
@@ -277,7 +255,15 @@ Main file path: app/streamlit_app.py
 Python version: 3.11+
 ```
 
-Commit the processed CSV and boundary GeoJSON if you want the hosted app to render the full polygon map. Avoid committing large raw Overpass dumps unless you intentionally want them in the repository.
+Runtime characteristics:
+
+- uses local processed CSV and GeoJSON files
+- avoids paid model APIs
+- keeps dependencies light: Streamlit, pandas, numpy, plotly, requests, and pytest
+- avoids heavy geospatial runtime dependencies such as GeoPandas
+- includes `.streamlit/config.toml`
+
+Commit the processed CSV and boundary GeoJSON for the hosted app to render the full polygon map. Avoid committing large raw Overpass dumps unless they are intentionally part of the repository.
 
 ---
 
@@ -290,9 +276,9 @@ python -m compileall -q app src tests
 
 ---
 
-## Current Limitations
+## Limitations
 
-- The scores are proxy indices, not official rankings.
+- Scores are proxy indices, not official rankings.
 - Rainy-day Comfort measures indoor-friendly places, not actual weather.
 - Family Living does not include schools, childcare quality, traffic safety, rent, or housing availability.
 - International Feel uses citizenship-based demographic signals, which are only a partial proxy.
@@ -300,11 +286,11 @@ python -m compileall -q app src tests
 
 ---
 
-## Next Improvements
+## Roadmap
 
 - Add source freshness metadata to the UI.
-- Add a small screenshot/GIF section for portfolio presentation.
-- Add real transit-stop and travel-time access.
+- Add a screenshot or GIF section for portfolio presentation.
+- Add transit-stop and travel-time access.
 - Add stronger family-living signals such as playgrounds, schools, childcare, traffic safety, and noise.
-- Add a “compare two districts” panel for side-by-side decision-making.
+- Add a side-by-side district comparison panel.
 - Add deployment badge and live demo link once hosted.
