@@ -570,11 +570,11 @@ def render_recommendations(df: pd.DataFrame) -> None:
         """
         <div class="atlas-card atlas-feature-card atlas-lite-hero">
             <div class="atlas-kicker">✨ Copenhagen Lite</div>
-            <h3>Chat your way to the right Copenhagen district</h3>
+            <h3>Describe your ideal Copenhagen day</h3>
             <p>
-                Describe the kind of neighbourhood, mood, rhythm or day you want.
-                Copenhagen Lite reads your message, translates it into preference signals,
-                and ranks the districts with clear explanations.
+                Use the search box like a mini chat. Write what you want in plain language:
+                calm streets, cafés, parks, transit, culture, rainy-day plans, family areas or social energy.
+                Copenhagen Lite turns your words into ranked district matches.
             </p>
         </div>
         """,
@@ -608,34 +608,14 @@ def render_recommendations(df: pd.DataFrame) -> None:
         "international_friendliness": 3,
     }
 
-    if "atlas_lite_query" not in st.session_state:
-        st.session_state["atlas_lite_query"] = ""
-
-    # Use a versioned text-area key so Clear can reset the input without
-    # mutating an already-instantiated Streamlit widget key.
-    if "atlas_lite_input_version" not in st.session_state:
-        st.session_state["atlas_lite_input_version"] = 0
-
-    input_key = f"atlas_lite_query_input_{st.session_state['atlas_lite_input_version']}"
-
     st.markdown(
         """
-        <div class="atlas-lite-chat-card">
-            <div class="atlas-lite-chat-top">
-                <div class="atlas-lite-avatar">✨</div>
+        <div class="atlas-lite-chat-shell">
+            <div class="atlas-lite-chat-header">
+                <span class="atlas-lite-avatar">✨</span>
                 <div>
                     <strong>Copenhagen Lite</strong>
-                    <span>Online · ready to match your Copenhagen mood</span>
-                </div>
-            </div>
-            <div class="atlas-lite-message-row">
-                <div class="atlas-lite-message atlas-lite-message-assistant">
-                    <span class="atlas-lite-message-label">Copenhagen Lite</span>
-                    <p>
-                        Tell me what kind of Copenhagen you want. You can mention cafés,
-                        calm streets, nightlife, green areas, transit, rainy-day plans,
-                        families, culture or international energy.
-                    </p>
+                    <em>Tell me the mood, lifestyle, or day you want.</em>
                 </div>
             </div>
         </div>
@@ -643,71 +623,21 @@ def render_recommendations(df: pd.DataFrame) -> None:
         unsafe_allow_html=True,
     )
 
-    st.markdown(
-        """
-        <div class="atlas-lite-input-panel">
-            <div class="atlas-lite-input-label">Your message</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.text_area(
-        "Message Copenhagen Lite",
+    query = st.text_area(
+        "Ask Copenhagen Lite",
         placeholder=(
-            "Write your message here...\n\n"
-            "Example: I want a calm neighbourhood with cosy cafés, parks, easy transit, "
+            "Example: I want a calm neighbourhood with cafés, parks, easy transit, "
             "rainy-day options, and not too much nightlife."
         ),
-        height=190,
+        height=150,
         label_visibility="collapsed",
-        key=input_key,
     )
-
-    send_col, reset_col = st.columns([0.78, 0.22], gap="small")
-    with send_col:
-        submitted = st.button(
-            "Send to Copenhagen Lite →",
-            type="primary",
-            use_container_width=True,
-            key="atlas_lite_send_button",
-        )
-    with reset_col:
-        cleared = st.button(
-            "Clear",
-            type="secondary",
-            use_container_width=True,
-            key="atlas_lite_clear_button",
-        )
-
-    if submitted:
-        st.session_state["atlas_lite_query"] = st.session_state.get(input_key, "").strip()
-
-    if cleared:
-        st.session_state["atlas_lite_query"] = ""
-        st.session_state["atlas_lite_input_version"] += 1
-        st.rerun()
-
-    query = st.session_state["atlas_lite_query"]
-
-    if query:
-        st.markdown(
-            f"""
-            <div class="atlas-lite-message-row atlas-lite-message-row-user">
-                <div class="atlas-lite-message atlas-lite-message-user">
-                    <span class="atlas-lite-message-label">You</span>
-                    <p>{_safe(query)}</p>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
 
     st.markdown(
         """
         <p class="atlas-lite-helper">
-            Tip: the more specific you are, the better the match. Mention pace, noise, cafés,
-            parks, culture, family needs, transport, or rainy-day plans.
+            Tip: write naturally. Try “quiet but central”, “cosy cafés and culture”, 
+            or “family-friendly with parks and practical errands”.
         </p>
         """,
         unsafe_allow_html=True,
@@ -723,15 +653,11 @@ def render_recommendations(df: pd.DataFrame) -> None:
         concept_pills = "".join(f'<span class="atlas-pill">{_safe(concept)}</span>' for concept in detected_concepts[:7])
         st.markdown(
             f"""
-            <div class="atlas-card atlas-smart-search-card">
+            <div class="atlas-card">
                 <div class="atlas-kicker">Smart Search understood</div>
-                <h3>Signals detected from your message</h3>
-                <div class="atlas-pill-row">
-                    {concept_pills}
-                </div>
-                <p>
-                    Copenhagen Lite translated these words into preference weights behind the scenes.
-                    You can still adjust everything manually below.
+                {concept_pills}
+                <p style="margin-top:0.65rem;">
+                    These words were translated into preference weights behind the scenes.
                 </p>
             </div>
             """,
@@ -745,7 +671,7 @@ def render_recommendations(df: pd.DataFrame) -> None:
             <div class="atlas-card sticky-preferences">
                 <div class="atlas-kicker">Fine-tune</div>
                 <h3>Preferences</h3>
-                <p>Move the sliders to adjust the match. More green, less noise, extra coffee — your call.</p>
+                <p>Move the sliders to adjust the match. More green, less noise, extra coffee!</p>
             </div>
             """,
             unsafe_allow_html=True,
