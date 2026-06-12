@@ -1,0 +1,53 @@
+"Population by sex, time, citizenship, district and age"
+
+" "," "," "," ","Age total","20-24 years","25-29 years","30-34 years"
+"Sex total"
+" ","2026Q2"
+" "," ","Citizenship total"
+" "," "," ","District - Indre By",58224,6795,7746,5711
+" "," "," ","District - Østerbro",82115,7514,10829,9126
+" "," "," ","District - Nørrebro",79779,8126,13913,10886
+" "," "," ","District - Vesterbro/Kongens Enghave",85072,7311,11741,11323
+" "," "," ","District - Valby",66321,6669,9231,7633
+" "," "," ","District - Vanløse",40847,3198,4608,4042
+" "," "," ","District - Brønshøj-Husum",44975,3181,3776,3551
+" "," "," ","District - Bispebjerg",55985,4853,8898,8023
+" "," "," ","District - Amager Øst",64254,6351,9197,7864
+" "," "," ","District - Amager Vest",92300,9636,11682,10600
+" "," ","Denmark"
+" "," "," ","District - Indre By",46721,4864,5686,3926
+" "," "," ","District - Østerbro",68933,6476,8745,6932
+" "," "," ","District - Nørrebro",66127,6840,11429,8560
+" "," "," ","District - Vesterbro/Kongens Enghave",65790,6075,8514,7606
+" "," "," ","District - Valby",51938,5048,6882,5337
+" "," "," ","District - Vanløse",35521,2750,3798,3218
+" "," "," ","District - Brønshøj-Husum",34412,2266,2551,2388
+" "," "," ","District - Bispebjerg",43373,3674,6777,6000
+" "," "," ","District - Amager Øst",51847,4982,7196,5667
+" "," "," ","District - Amager Vest",67450,6329,7534,6255
+" "," ","Western countries"
+" "," "," ","District - Indre By",9262,1680,1780,1404
+" "," "," ","District - Østerbro",9341,868,1710,1653
+" "," "," ","District - Nørrebro",8517,906,2029,1809
+" "," "," ","District - Vesterbro/Kongens Enghave",12974,871,2625,2831
+" "," "," ","District - Valby",7375,835,1407,1395
+" "," "," ","District - Vanløse",3087,264,551,537
+" "," "," ","District - Brønshøj-Husum",3549,242,428,400
+" "," "," ","District - Bispebjerg",6708,687,1560,1366
+" "," "," ","District - Amager Øst",7751,786,1487,1606
+" "," "," ","District - Amager Vest",15889,2563,3096,3005
+" "," ","Non-western countries"
+" "," "," ","District - Indre By",2241,251,280,381
+" "," "," ","District - Østerbro",3841,170,374,541
+" "," "," ","District - Nørrebro",5135,380,455,517
+" "," "," ","District - Vesterbro/Kongens Enghave",6308,365,602,886
+" "," "," ","District - Valby",7008,786,942,901
+" "," "," ","District - Vanløse",2239,184,259,287
+" "," "," ","District - Brønshøj-Husum",7014,673,797,763
+" "," "," ","District - Bispebjerg",5904,492,561,657
+" "," "," ","District - Amager Øst",4656,583,514,591
+" "," "," ","District - Amager Vest",8961,744,1052,1340
+
+"Source: Calculations made by the City of Copenhagen based on data "
+"from the Civil Registration System (CPR). "
+

@@ -1,0 +1,18 @@
+"Families by family type, time, district and number of children"
+
+" "," "," ","Children total","0 children","1 child","2 children","3 children","More than 3 children"
+"Family type total"
+" ","2026Q2"
+" "," ","District - Indre By",37503,31413,3199,2375,458,58
+" "," ","District - Østerbro",50292,40372,5229,3861,733,97
+" "," ","District - Nørrebro",50933,41749,4956,3292,730,206
+" "," ","District - Vesterbro/Kongens Enghave",52234,41615,5852,3987,698,82
+" "," ","District - Valby",39438,31049,4024,3408,794,163
+" "," ","District - Vanløse",23694,18450,2359,2240,555,90
+" "," ","District - Brønshøj-Husum",24012,17445,2648,2734,931,254
+" "," ","District - Bispebjerg",36496,30471,3205,2118,565,137
+" "," ","District - Amager Øst",39771,32223,3937,2930,607,74
+" "," ","District - Amager Vest",54657,42820,5832,4850,988,167
+
+"Source:Own calculations based on microdata from Statistics Denmark "
+
