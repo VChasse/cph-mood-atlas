@@ -855,6 +855,24 @@ textarea {
             font-weight: 650;
         }
 
+
+        .atlas-lite-input-panel {
+            margin-top: 0.35rem;
+            padding: 0.85rem 1rem 0.55rem;
+            border-radius: 22px 22px 0 0;
+            background: linear-gradient(135deg, rgba(15, 85, 87, 0.10), rgba(201, 137, 43, 0.10));
+            border: 1px solid rgba(15, 85, 87, 0.16);
+            border-bottom: 0;
+        }
+
+        .atlas-lite-input-label {
+            color: var(--atlas-teal-dark);
+            font-size: 0.78rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
         textarea {
             min-height: 190px !important;
             border-radius: 24px !important;
@@ -872,25 +890,29 @@ textarea {
             box-shadow: 0 0 0 4px rgba(15, 85, 87, 0.12) !important;
         }
 
-        div[data-testid="stForm"] {
-            border: 0;
-            padding: 0;
-        }
-
-        div[data-testid="stForm"] button[kind="primary"] {
-            min-height: 56px;
+        div[data-testid="stButton"] button[kind="primary"] {
+            min-height: 60px;
             border-radius: 18px;
-            font-size: 1.04rem;
+            font-size: 1.08rem;
             font-weight: 920;
             letter-spacing: -0.015em;
             background: var(--atlas-teal-dark);
-            border: 1px solid rgba(15, 85, 87, 0.90);
-            box-shadow: 0 14px 30px rgba(15, 85, 87, 0.22);
+            border: 1px solid rgba(15, 85, 87, 0.95);
+            box-shadow: 0 14px 30px rgba(15, 85, 87, 0.24);
         }
 
-        div[data-testid="stForm"] button[kind="primary"]:hover {
+        div[data-testid="stButton"] button[kind="primary"]:hover {
             transform: translateY(-1px);
-            box-shadow: 0 18px 36px rgba(15, 85, 87, 0.28);
+            box-shadow: 0 18px 36px rgba(15, 85, 87, 0.30);
+        }
+
+        div[data-testid="stButton"] button[kind="secondary"] {
+            min-height: 60px;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 850;
+            border: 1px solid var(--atlas-line-strong);
+            background: rgba(255,255,255,0.82);
         }
 
         .atlas-lite-helper {
