@@ -611,8 +611,12 @@ def render_recommendations(df: pd.DataFrame) -> None:
     if "atlas_lite_query" not in st.session_state:
         st.session_state["atlas_lite_query"] = ""
 
-    if "atlas_lite_query_input" not in st.session_state:
-        st.session_state["atlas_lite_query_input"] = st.session_state["atlas_lite_query"]
+    # Use a versioned text-area key so Clear can reset the input without
+    # mutating an already-instantiated Streamlit widget key.
+    if "atlas_lite_input_version" not in st.session_state:
+        st.session_state["atlas_lite_input_version"] = 0
+
+    input_key = f"atlas_lite_query_input_{st.session_state['atlas_lite_input_version']}"
 
     st.markdown(
         """
@@ -657,7 +661,7 @@ def render_recommendations(df: pd.DataFrame) -> None:
         ),
         height=190,
         label_visibility="collapsed",
-        key="atlas_lite_query_input",
+        key=input_key,
     )
 
     send_col, reset_col = st.columns([0.78, 0.22], gap="small")
@@ -677,11 +681,11 @@ def render_recommendations(df: pd.DataFrame) -> None:
         )
 
     if submitted:
-        st.session_state["atlas_lite_query"] = st.session_state["atlas_lite_query_input"].strip()
+        st.session_state["atlas_lite_query"] = st.session_state.get(input_key, "").strip()
 
     if cleared:
         st.session_state["atlas_lite_query"] = ""
-        st.session_state["atlas_lite_query_input"] = ""
+        st.session_state["atlas_lite_input_version"] += 1
         st.rerun()
 
     query = st.session_state["atlas_lite_query"]
