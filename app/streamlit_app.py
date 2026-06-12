@@ -732,6 +732,224 @@ textarea {
     color: var(--atlas-teal-dark);
     font-weight: 900;
 }
+
+
+        /* Copenhagen Lite chat UI: higher contrast, larger input, explicit send action */
+        .atlas-lite-hero h3 {
+            font-size: clamp(1.95rem, 3.2vw, 2.75rem);
+            letter-spacing: -0.055em;
+        }
+
+        .atlas-lite-hero p {
+            max-width: 820px;
+            font-size: 1.08rem;
+            line-height: 1.62;
+        }
+
+        .atlas-lite-chat-card {
+            margin: 1.35rem 0 0.85rem;
+            padding: 1.25rem;
+            border-radius: 28px;
+            border: 1px solid rgba(15, 31, 34, 0.16);
+            background:
+                radial-gradient(circle at top left, rgba(201, 137, 43, 0.22), transparent 34%),
+                linear-gradient(135deg, rgba(15, 85, 87, 0.99), rgba(10, 43, 45, 0.97));
+            color: #fffaf0;
+            box-shadow: 0 24px 58px rgba(15, 31, 34, 0.18);
+        }
+
+        .atlas-lite-chat-top {
+            display: flex;
+            align-items: center;
+            gap: 0.95rem;
+            margin-bottom: 1.05rem;
+        }
+
+        .atlas-lite-avatar {
+            width: 58px;
+            height: 58px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            color: #fffaf0;
+            font-size: 1.75rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .atlas-lite-chat-top strong {
+            display: block;
+            color: #fffaf0;
+            font-size: 1.24rem;
+            font-weight: 920;
+            letter-spacing: -0.025em;
+        }
+
+        .atlas-lite-chat-top span {
+            display: block;
+            margin-top: 0.14rem;
+            color: rgba(255, 250, 240, 0.78);
+            font-size: 0.98rem;
+        }
+
+        .atlas-lite-message-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .atlas-lite-message-row-user {
+            justify-content: flex-end;
+            margin: 0.95rem 0 0.7rem;
+        }
+
+        .atlas-lite-message {
+            max-width: 860px;
+            border-radius: 22px;
+            line-height: 1.58;
+        }
+
+        .atlas-lite-message-assistant {
+            padding: 1rem 1.1rem;
+            background: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 250, 240, 0.94);
+            font-size: 1.06rem;
+        }
+
+        .atlas-lite-message-assistant p,
+        .atlas-lite-message-user p {
+            margin: 0;
+        }
+
+        .atlas-lite-message-label {
+            display: block;
+            margin-bottom: 0.36rem;
+            font-size: 0.72rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
+
+        .atlas-lite-message-assistant .atlas-lite-message-label {
+            color: rgba(255, 250, 240, 0.72);
+        }
+
+        .atlas-lite-message-user {
+            width: min(860px, 100%);
+            padding: 1rem 1.15rem;
+            background: #fffaf0;
+            border: 1px solid rgba(15, 31, 34, 0.10);
+            color: var(--atlas-ink);
+            box-shadow: 0 12px 28px rgba(15, 31, 34, 0.08);
+        }
+
+        .atlas-lite-message-user .atlas-lite-message-label {
+            color: var(--atlas-teal-dark);
+        }
+
+        .atlas-lite-message-user p {
+            font-size: 1.06rem;
+            line-height: 1.55;
+            font-weight: 650;
+        }
+
+        textarea {
+            min-height: 190px !important;
+            border-radius: 24px !important;
+            border: 1.5px solid rgba(15, 85, 87, 0.24) !important;
+            background: #fffdf8 !important;
+            color: var(--atlas-ink) !important;
+            font-size: 1.13rem !important;
+            line-height: 1.62 !important;
+            padding: 1rem 1.08rem !important;
+            box-shadow: 0 13px 32px rgba(15, 31, 34, 0.065) !important;
+        }
+
+        textarea:focus {
+            border-color: rgba(15, 85, 87, 0.60) !important;
+            box-shadow: 0 0 0 4px rgba(15, 85, 87, 0.12) !important;
+        }
+
+        div[data-testid="stForm"] {
+            border: 0;
+            padding: 0;
+        }
+
+        div[data-testid="stForm"] button[kind="primary"] {
+            min-height: 56px;
+            border-radius: 18px;
+            font-size: 1.04rem;
+            font-weight: 920;
+            letter-spacing: -0.015em;
+            background: var(--atlas-teal-dark);
+            border: 1px solid rgba(15, 85, 87, 0.90);
+            box-shadow: 0 14px 30px rgba(15, 85, 87, 0.22);
+        }
+
+        div[data-testid="stForm"] button[kind="primary"]:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 36px rgba(15, 85, 87, 0.28);
+        }
+
+        .atlas-lite-helper {
+            margin: 0.35rem 0 1.25rem;
+            color: var(--atlas-muted);
+            font-size: 0.96rem;
+            line-height: 1.55;
+        }
+
+        .atlas-smart-search-card h3 {
+            margin-top: 0.2rem;
+        }
+
+        .atlas-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 0.75rem 0;
+        }
+
+        .atlas-example-card-clickable {
+            min-height: 118px;
+            transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+        }
+
+        .atlas-example-card-clickable:hover {
+            transform: translateY(-2px);
+            border-color: rgba(15, 85, 87, 0.22);
+            box-shadow: 0 16px 34px rgba(15, 31, 34, 0.08);
+        }
+
+        .atlas-results-intro {
+            margin-bottom: 0.85rem;
+        }
+
+        .recommendation-card-large {
+            padding: 1.15rem 1.2rem;
+        }
+
+        .atlas-reco-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .atlas-rank-bubble {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(15, 85, 87, 0.10);
+            color: var(--atlas-teal-dark);
+            font-weight: 900;
+        }
+
         </style>
         """,
         unsafe_allow_html=True,
