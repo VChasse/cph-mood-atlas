@@ -639,26 +639,50 @@ def render_recommendations(df: pd.DataFrame) -> None:
         unsafe_allow_html=True,
     )
 
-    with st.form("copenhagen_lite_chat_form", clear_on_submit=False):
-        query_input = st.text_area(
-            "Message Copenhagen Lite",
-            placeholder=(
-                "Write your message here...\n\n"
-                "Example: I want a calm neighbourhood with cosy cafés, parks, easy transit, "
-                "rainy-day options, and not too much nightlife."
-            ),
-            height=190,
-            label_visibility="collapsed",
-            key="atlas_lite_query_input",
-        )
-        submitted = st.form_submit_button(
+    st.markdown(
+        """
+        <div class="atlas-lite-input-panel">
+            <div class="atlas-lite-input-label">Your message</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.text_area(
+        "Message Copenhagen Lite",
+        placeholder=(
+            "Write your message here...\n\n"
+            "Example: I want a calm neighbourhood with cosy cafés, parks, easy transit, "
+            "rainy-day options, and not too much nightlife."
+        ),
+        height=190,
+        label_visibility="collapsed",
+        key="atlas_lite_query_input",
+    )
+
+    send_col, reset_col = st.columns([0.78, 0.22], gap="small")
+    with send_col:
+        submitted = st.button(
             "Send to Copenhagen Lite →",
             type="primary",
             use_container_width=True,
+            key="atlas_lite_send_button",
+        )
+    with reset_col:
+        cleared = st.button(
+            "Clear",
+            type="secondary",
+            use_container_width=True,
+            key="atlas_lite_clear_button",
         )
 
     if submitted:
-        st.session_state["atlas_lite_query"] = query_input.strip()
+        st.session_state["atlas_lite_query"] = st.session_state["atlas_lite_query_input"].strip()
+
+    if cleared:
+        st.session_state["atlas_lite_query"] = ""
+        st.session_state["atlas_lite_query_input"] = ""
+        st.rerun()
 
     query = st.session_state["atlas_lite_query"]
 
