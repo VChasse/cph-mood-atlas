@@ -670,7 +670,7 @@ def render_recommendations(df: pd.DataFrame) -> None:
             """
             <div class="atlas-card sticky-preferences">
                 <div class="atlas-kicker">Fine-tune</div>
-                <h3>Preference weights</h3>
+                <h3>Preferences</h3>
                 <p>Move the sliders to adjust the match. More green, less noise, extra coffee!</p>
             </div>
             """,
